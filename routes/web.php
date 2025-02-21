@@ -1,6 +1,11 @@
 <?php
 
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\ControllerForGroup;
+use App\Http\Controllers\InvokableController;
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\View\InvokableComponentVariable;
 
 Route::get('/', function () {
     return view('welcome');
@@ -116,3 +121,25 @@ Route::prefix('page')->group(function () {
         return view('first');
     });
 });
+
+
+
+
+//route to controller simple
+
+route::get('welcome',[PageController::class,'showWelcome']);
+
+//passing the parameter to controller method and viewfile
+route::get('page/user/{name}',[PageController::class,'showPage']);
+
+route::controller(ControllerForGroup::class)->group(function(){
+route::get('/message','showMessage');
+route::get('group/','showGroup');
+route::get('member','showMember');
+
+});
+
+
+
+//routing to single action controller
+route::get('/action',InvokableController::class);
