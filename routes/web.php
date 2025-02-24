@@ -6,6 +6,7 @@ use App\Http\Controllers\InvokableController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\InvokableComponentVariable;
+use App\Http\Controllers\RestfulController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -143,3 +144,34 @@ route::get('member','showMember');
 
 //routing to single action controller
 route::get('/action',InvokableController::class);
+
+
+//restful routing for resourceful controller with restful action
+
+
+//route for index() action
+route::get('/viewall',[RestfulController::class,'index']);
+
+
+
+//route for create() action
+route::get('/additem',[RestfulController::class,'create']);
+
+//route for store() action
+
+route::post('/submitform',[RestfulController::class,'store']);
+
+//route for show() action
+route::get('/showdata/{id}',[RestfulController::class,'show']);
+
+
+//route for edit() action
+route::get('/editdetail/{id}',[RestfulController::class,'edit'] );
+
+//route for update() actionn
+route::put('/submitedit/{id}',[RestfulController::class,'update']);
+route::patch('/submitedit/{id}',[RestfulController::class,'update']);
+
+
+route::delete('/deletedata/{id}',[RestfulController::class,'delete']);
+
