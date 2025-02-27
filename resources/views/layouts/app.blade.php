@@ -11,6 +11,8 @@
     
     @yield('content')
 
+    <x-button class="btn-danger" id="btn" onclick="alert('hello')">Click me</x-button>
+
     @stack('js')
     
     

@@ -66,5 +66,26 @@
             width: 50%;
             height: 10%;
         }
+        .btn-danger {
+            display: block;
+         
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+           
+            cursor: pointer;
+            border-radius: 4px;
+            margin-left: 47%;
+            margin-top: 10px;
+        }
+
+        .btn-danger:hover {
+            background-color: darkred;
+        }
     </style>
     
