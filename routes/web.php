@@ -16,7 +16,7 @@ Route::get('/', function () {
 
 Route::get('home/',function(){
     return view('welcome');
-});
+})->name('home');
 
 // route::get('about/',function(){
 //     return view('about');
@@ -29,7 +29,7 @@ Route::get('home/',function(){
 //this is subroute
 route::get('home/dashboard',function(){
     return view('main');
-});
+})->name('dashboard');
 
 
 
@@ -197,3 +197,8 @@ route::post('/add',[StudentController::class,'store'])->name('students.store');
 
 route::put('/update/{id}',[StudentController::class,'update'])->name('students.update');
 route::get('/show/{id}',[StudentController::class,'show'])->name('students.view');
+
+
+route::get('/layout',function(){
+    return view('home-child');
+});
