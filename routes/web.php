@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\ControllerForGroup;
 use App\Http\Controllers\InvokableController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\InvokableComponentVariable;
 use App\Http\Controllers\RestfulController;
@@ -175,3 +176,24 @@ route::patch('/submitedit/{id}',[RestfulController::class,'update']);
 
 route::delete('/deletedata/{id}',[RestfulController::class,'delete']);
 
+
+
+
+
+
+
+//for student crud
+
+route::get('/students',[StudentController::class,'index'])->name('students.index');
+
+route::get('/edit/{id}',[StudentController::class,'edit'])->name('students.edit');
+route::delete('/delete/{id}',[StudentController::class,'destroy'])->name('students.destroy');
+
+route::get('/add',[StudentController::class,'create'])->name('students.create');
+route::post('/add',[StudentController::class,'store'])->name('students.store');
+
+
+
+
+route::put('/update/{id}',[StudentController::class,'update'])->name('students.update');
+route::get('/show/{id}',[StudentController::class,'show'])->name('students.view');
