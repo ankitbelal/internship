@@ -5,14 +5,19 @@ use App\Http\Controllers\ControllerForGroup;
 use App\Http\Controllers\InvokableController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\InvokableComponentVariable;
 use App\Http\Controllers\RestfulController;
 use App\Http\Controllers\EmployeeController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[UserController::class ,'index'])->name('login');
+Route::post('/login',[UserController::class,'login'])->name('login.submit');
+
+Route::get('/register',[UserController::class,'showRegisterForm'])->name('register');
+route::post('/register',[UserController::class,'register'])->name('register.submit');
+
+
 
 
 Route::get('home/',function(){
@@ -204,6 +209,7 @@ route::get('/layout',function(){
     return view('home-child');
 });
 
+route::post('/logout',[UserController::class,'logout'])->name('logout');
 
 
 

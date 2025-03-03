@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Employee;
 
@@ -12,16 +13,26 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees=Employee::all();
+        if(Auth::check()){
+            $employees=Employee::all();
         return view('employee-dashboard',compact('employees'));
+        }
+        return redirect()->route('login');
+       
     }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
+
     {
-        return view('employee-create');
+        if(Auth::check()){
+            return view('employee-create');
+        }
+       else{
+           return redirect()->route('login');
+       }
     }
 
     /**
@@ -65,16 +76,30 @@ class EmployeeController extends Controller
      * Display the specified resource.
      */
     public function show(string $id)
+    
     {
-        return view('view-employee', ['employee' => Employee::find($id)]);
+        if(Auth::check()){
+            return view('view-employee', ['employee' => Employee::find($id)]);
+
+        }
+        else{
+            return redirect()->route('login');
+        }
+      
     }
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
+
     {
-        return view('edit-employee', ['employee' => Employee::find($id)]);
+        if(Auth::check()){
+            return view('edit-employee', ['employee' => Employee::find($id)]);
+        }
+       else{
+           return redirect()->route('login');
+       }
     }
 
     /**
