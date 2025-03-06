@@ -94,12 +94,7 @@ class EmployeeController extends Controller
     public function edit(string $id)
 
     {
-        if(Auth::check()){
-            return view('edit-employee', ['employee' => Employee::find($id)]);
-        }
-       else{
-           return redirect()->route('login');
-       }
+        return view('edit-employee', ['employee' => Employee::find($id)]);
     }
 
     /**
@@ -152,5 +147,6 @@ class EmployeeController extends Controller
         }
         $employee->delete();
         return redirect()->route('employees.index')->with('success', 'Employee deleted successfully');
+        
     }
 }

@@ -11,7 +11,7 @@ use Illuminate\View\InvokableComponentVariable;
 use App\Http\Controllers\RestfulController;
 use App\Http\Controllers\EmployeeController;
 
-Route::get('/',[UserController::class ,'index'])->name('login');
+Route::get('/login',[UserController::class ,'index'])->name('login');
 Route::post('/login',[UserController::class,'login'])->name('login.submit');
 
 Route::get('/register',[UserController::class,'showRegisterForm'])->name('register');
