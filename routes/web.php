@@ -240,3 +240,20 @@ route::get('/sendmail',[EmailController::class,'sendEmail'])->name('sendmail');
 
 
 route::get('/sendnotification/{id}',[EmployeeController::class,'sendNotification'])->name('employees.notify');
+
+
+
+//this is for the email sending using queue and job
+use App\Jobs\SendEmailJob;
+
+
+Route::get('/send-email', function () {
+
+
+    SendEmailJob::dispatch('mohitbelal9@gmail.com');
+
+
+    return 'Email sent!';
+
+
+});

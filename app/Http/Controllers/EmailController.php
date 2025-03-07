@@ -16,6 +16,8 @@ class EmailController extends Controller
 
         Mail::to($toEmail)->send(new TestEmail($mailMessage,$subject));
         dd("Email is Sent.");
+        
+
 
     }
 }
