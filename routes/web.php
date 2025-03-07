@@ -237,3 +237,6 @@ route::get('/employee/show/{id}',[EmployeeController::class,'show'])->name('empl
 
 
 route::get('/sendmail',[EmailController::class,'sendEmail'])->name('sendmail');
+
+
+route::get('/sendnotification/{id}',[EmployeeController::class,'sendNotification'])->name('employees.notify');
