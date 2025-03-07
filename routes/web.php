@@ -7,9 +7,11 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Validation\Rules\Email;
 use Illuminate\View\InvokableComponentVariable;
 use App\Http\Controllers\RestfulController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\EmailController;
 
 Route::get('/login',[UserController::class ,'index'])->name('login');
 Route::post('/login',[UserController::class,'login'])->name('login.submit');
@@ -233,3 +235,5 @@ route::delete('/employee/delete/{id}',[EmployeeController::class,'destroy'])->na
 route::get('/employee/show/{id}',[EmployeeController::class,'show'])->name('employees.view');
 
 
+
+route::get('/sendmail',[EmailController::class,'sendEmail'])->name('sendmail');
