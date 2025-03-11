@@ -8,6 +8,7 @@ use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\InvokableComponentVariable;
 use App\Http\Controllers\RestfulController;
+use App\Http\Controllers\EmployeeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -202,3 +203,27 @@ route::get('/show/{id}',[StudentController::class,'show'])->name('students.view'
 route::get('/layout',function(){
     return view('home-child');
 });
+
+
+
+
+
+
+
+//this is the route for the form handling in employee controller
+
+route::get('/employee',[EmployeeController::class,'index'])->name('employees.index');
+
+route::get('/employee/add',[EmployeeController::class,'create'])->name('employees.create');
+
+route::post('/employee/add',[EmployeeController::class,'store'])->name('employees.store');
+
+route::get('/employee/edit/{id}',[EmployeeController::class,'edit'])->name('employees.edit');
+
+route::put('/employee/edit/{id}',[EmployeeController::class,'update'])->name('employees.update');
+
+route::delete('/employee/delete/{id}',[EmployeeController::class,'destroy'])->name('employees.destroy');
+
+route::get('/employee/show/{id}',[EmployeeController::class,'show'])->name('employees.view');
+
+
