@@ -6,7 +6,13 @@
 </head>
 <body>
     <div class="container mt-5">
+        
+    <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+                        @csrf
+                        <button type="submit" class="btn btn-danger btn-sm" style="margin-left: 90%">Logout</button>
+                    </form>
         <h1>employees List</h1>
+
         <table class="table table-bordered">
             <thead class="thead-green" style="background-color: aqua;">
                 <tr>
