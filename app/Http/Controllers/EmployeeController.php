@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use App\Notifications\MyNotification;
 
 class EmployeeController extends Controller
 {
@@ -148,5 +149,10 @@ class EmployeeController extends Controller
         $employee->delete();
         return redirect()->route('employees.index')->with('success', 'Employee deleted successfully');
         
+    }
+
+    public function sendNotification(string $id){
+        $user = Employee::find($id);
+$user->notify(new MyNotification('This is a test notification.'));
     }
 }

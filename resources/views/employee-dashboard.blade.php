@@ -47,6 +47,15 @@
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                             </form>
+
+                            <form action="{{ route('employees.notify', $employee->id) }}" method="GET" style="display:inline;">
+                                @csrf
+                           
+                                <button type="submit" class="btn btn-warning btn-sm">send notification</button>
+                            </form>
+                            
+
+
                         </td>
                     </tr>
                     @endforeach
