@@ -41,7 +41,7 @@
                     <div class="form-group">
                         <label for="skills">Skills:</label>
                         @php
-                            $skills = old('skills', $employee->skills) ?? [];
+                            $skills = old('skills', is_array($employee->skills) ? $employee->skills : explode(',', $employee->skills)) ?? [];
                         @endphp
                         <div class="form-check form-check-inline">
                             <input type="checkbox" class="form-check-input" id="java" name="skills[]" value="java" {{ in_array('java', $skills) ? 'checked' : '' }}>

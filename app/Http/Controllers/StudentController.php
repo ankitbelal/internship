@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Http\Resources\StudentResource;
 
 class StudentController extends Controller
 {
@@ -14,10 +15,16 @@ class StudentController extends Controller
     public function index()
     {
     $students = Student::all();
+
+
+    //this is for api response
+    return new StudentResource($students);
+    
   
-    return view('showStudent', compact('students'));
+    // return view('showStudent', compact('students'));
         
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -33,7 +40,7 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        Student::create([
+       $students= Student::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
@@ -42,7 +49,14 @@ class StudentController extends Controller
             'updated_at' => now()
         ]);
 
-        return redirect()->route('students.index');
+        if($students){
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Student added successfully'
+            ]);
+       
+        // return redirect()->route('students.index');
+        }
 
      
     }
@@ -52,7 +66,9 @@ class StudentController extends Controller
      */
     public function show(string $id)
     {
-        return view('viewStudents', ['student' => Student::find($id)]);
+        $student = Student::find($id);
+        return new StudentResource($student); 
+        // return view('viewStudents', ['student' => Student::find($id)]);
     }
 
     /**
@@ -70,15 +86,30 @@ class StudentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-      Student::where('id', $id)->update([
+      $updated=Student::where('id', $id)->update([
         'name' => $request->name,
         'email' => $request->email,
         'phone' => $request->phone,
         'address' => $request->address,
         'updated_at' => now()
       ]);
-      return redirect()->route('students.index');
+
+      
+      
+      
+    //   return redirect()->route('students.index');
+
+if($updated){
+    return response()->json([
+        'status' => 'success',
+        'message' => 'Student updated successfully'
+    ]);
+
     }
+
+}
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -86,8 +117,18 @@ class StudentController extends Controller
     public function destroy(string $id)
     {
         $user=Student::find($id);
-        $user->delete();
-        return redirect()->route('students.index');
+      $deleted=  $user->delete();
+
+if($deleted){
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Student deleted successfully'
+        ]);
+    }
+
+        // return redirect()->route('students.index');
+
+
         
     }
 }
