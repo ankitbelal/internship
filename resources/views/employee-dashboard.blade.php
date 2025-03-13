@@ -22,6 +22,7 @@
                     <th>Email</th>
                     <th>Phone</th>
                     <th>salary</th>
+                    <th>Joined</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -39,6 +40,7 @@
                         <td>{{ $employee->email }}</td>
                         <td>{{ $employee->phone }}</td>
                         <td>{{ $employee->salary }}</td>
+                        <td>{{ $employee->created_at }}</td>
                         <td>
                             <a href="{{ route('employees.edit', $employee->id) }}" class="btn btn-primary btn-sm">Edit</a>
                             <a href="{{ route('employees.view', $employee->id) }}" class="btn btn-primary btn-sm">View</a>
