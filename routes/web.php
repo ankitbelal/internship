@@ -190,21 +190,21 @@ route::delete('/deletedata/{id}',[RestfulController::class,'delete']);
 
 
 
-//for student crud
+// //for student crud
 
-route::get('/students',[StudentController::class,'index'])->name('students.index');
+// route::get('/students',[StudentController::class,'index'])->name('students.index');
 
-route::get('/edit/{id}',[StudentController::class,'edit'])->name('students.edit');
-route::delete('/delete/{id}',[StudentController::class,'destroy'])->name('students.destroy');
+// route::get('/edit/{id}',[StudentController::class,'edit'])->name('students.edit');
+// route::delete('/delete/{id}',[StudentController::class,'destroy'])->name('students.destroy');
 
-route::get('/add',[StudentController::class,'create'])->name('students.create');
-route::post('/add',[StudentController::class,'store'])->name('students.store');
-
-
+// route::get('/add',[StudentController::class,'create'])->name('students.create');
+// route::post('/add',[StudentController::class,'store'])->name('students.store');
 
 
-route::put('/update/{id}',[StudentController::class,'update'])->name('students.update');
-route::get('/show/{id}',[StudentController::class,'show'])->name('students.view');
+
+
+// route::put('/update/{id}',[StudentController::class,'update'])->name('students.update');
+// route::get('/show/{id}',[StudentController::class,'show'])->name('students.view');
 
 
 route::get('/layout',function(){
@@ -257,3 +257,5 @@ Route::get('/send-email', function () {
 
 
 });
+
+Route::redirect('/students', '/api/students');
