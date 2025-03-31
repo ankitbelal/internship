@@ -220,26 +220,20 @@ route::post('/logout',[UserController::class,'logout'])->name('logout');
 
 //this is the route for the form handling in employee controller
 
-route::get('/employee',[EmployeeController::class,'index'])->name('employees.index');
-
-route::get('/employee/add',[EmployeeController::class,'create'])->name('employees.create');
-
-route::post('/employee/add',[EmployeeController::class,'store'])->name('employees.store');
-
-route::get('/employee/edit/{id}',[EmployeeController::class,'edit'])->name('employees.edit');
-
-route::put('/employee/edit/{id}',[EmployeeController::class,'update'])->name('employees.update');
-
-route::delete('/employee/delete/{id}',[EmployeeController::class,'destroy'])->name('employees.destroy');
-
-route::get('/employee/show/{id}',[EmployeeController::class,'show'])->name('employees.view');
 
 
+Route:: middleware(['auth'])-> prefix('employee')->group(function () {
+    Route::get('/', [EmployeeController::class, 'index'])->name('employees.index');
+    Route::get('/add', [EmployeeController::class, 'create'])->name('employees.create');
+    Route::post('/add', [EmployeeController::class, 'store'])->name('employees.store');
+    Route::get('/edit/{id}', [EmployeeController::class, 'edit'])->name('employees.edit');
+    Route::put('/edit/{id}', [EmployeeController::class, 'update'])->name('employees.update');
+    Route::delete('/delete/{id}', [EmployeeController::class, 'destroy'])->name('employees.destroy');
+    Route::get('/show/{id}', [EmployeeController::class, 'show'])->name('employees.view');
+    Route::get('/sendnotification/{id}', [EmployeeController::class, 'sendNotification'])->name('employees.notify');
+    Route::get('/sendmail', [EmailController::class, 'sendEmail'])->name('sendmail');
+});
 
-route::get('/sendmail',[EmailController::class,'sendEmail'])->name('sendmail');
-
-
-route::get('/sendnotification/{id}',[EmployeeController::class,'sendNotification'])->name('employees.notify');
 
 
 

@@ -18,12 +18,10 @@ class EmployeeController extends Controller
     }
     public function index()
     {
-        if(Auth::check()){
+        
            $employees= $this->employeeServices->getAllEmployees();
         return view('employee-dashboard',compact('employees'));
-        }
-        return redirect()->route('login');
-       
+      
     }
 
     /**
@@ -32,12 +30,8 @@ class EmployeeController extends Controller
     public function create()
 
     {
-        if(Auth::check()){
             return view('employee-create');
-        }
-       else{
-           return redirect()->route('login');
-       }
+       
     }
 
     /**
@@ -74,13 +68,10 @@ class EmployeeController extends Controller
     public function show(string $id)
     
     {
-        if(Auth::check()){
+        
             return view('view-employee', ['employee' => $this->employeeServices->getEmployeeById($id)]);
 
-        }
-        else{
-            return redirect()->route('login');
-        }
+       
       
     }
 
