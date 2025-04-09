@@ -238,18 +238,8 @@ Route:: middleware(['auth'])-> prefix('employee')->group(function () {
 
 
 //this is for the email sending using queue and job
-use App\Jobs\SendEmailJob;
 
 
-Route::get('/send-email', function () {
 
-
-    SendEmailJob::dispatch('mohitbelal9@gmail.com');
-
-
-    return 'Email sent!';
-
-
-});
 
 Route::redirect('/students', '/api/students');
